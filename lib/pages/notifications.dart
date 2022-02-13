@@ -12,31 +12,11 @@ class Notifications extends StatefulWidget {
 class _NotificationsState extends State<Notifications> {
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
-        stream: Firestore.instance.collection('Notifications').snapshots(),
-        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (!snapshot.hasData) return Splash();
-          List notif = [];
-          snapshot.data.documents.forEach((element) {
-            if (element.data['notif'] != null) {
-              notif.add(element.data['notif']);
-            }
-          });
-          return notif.length == 0
-              ? Scaffold(body: Center(child: Text('No new notifications')))
-              : Scaffold(
-                  body: new ListView.builder(
-                      itemCount: notif.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return ListTile(
-                          title: Text(notif[index].toString()),
-                        );
-                      }));
-        });
-
-    // return Scaffold(
-    //   backgroundColor: Colors.green,
-    //   body: Center(child: Text('Notifications')),
-    // );
+    return Scaffold(
+      body: Container(
+        color: Colors.yellow,
+        child: Text("Notifications Page"),
+      ),
+    );
   }
 }
