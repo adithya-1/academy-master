@@ -1,3 +1,4 @@
+import 'package:academy_manager/Constants.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:academy_manager/pages/attendance.dart';
@@ -29,8 +30,8 @@ class _LandingPageState extends State<LandingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: const Color(0xFFf96327),
-          title: Text("PESU"),
+          backgroundColor: Constants.greenColor,
+          title: Text("Academy Manager"),
         ),
         drawer: Theme(
           data: Theme.of(context).copyWith(
@@ -38,10 +39,18 @@ class _LandingPageState extends State<LandingPage> {
           ),
           child: Drawer(
             child: ListView(
+              reverse: true,
               children: <Widget>[
-                ListTile(
-                  title: Text('Log Out'),
-                  onTap: widget.onSignedOut,
+                Padding(
+                  padding: EdgeInsets.all(10),
+                  child: ListTile(
+                    title: Center(
+                        child: Text(
+                      'Log Out',
+                      style: TextStyle(fontSize: 20),
+                    )),
+                    onTap: widget.onSignedOut,
+                  ),
                 )
               ],
             ),
@@ -59,13 +68,13 @@ class _LandingPageState extends State<LandingPage> {
             BottomNavyBarItem(
               icon: Icon(
                 Icons.calendar_today,
-                color: Colors.redAccent[700],
+                color: Constants.greenColor,
               ),
               title: Text(
                 'Attendance',
                 style: TextStyle(color: null),
               ),
-              activeColor: Colors.redAccent[700],
+              activeColor: Constants.greenColor,
               textAlign: TextAlign.center,
             ),
             BottomNavyBarItem(
@@ -76,7 +85,7 @@ class _LandingPageState extends State<LandingPage> {
                 'Notifications',
                 style: TextStyle(color: null),
               ),
-              activeColor: Color(0xFF3599EF),
+              activeColor: Constants.greenColor,
               textAlign: TextAlign.center,
             ),
             BottomNavyBarItem(
@@ -85,7 +94,7 @@ class _LandingPageState extends State<LandingPage> {
                 'Feedback',
                 style: TextStyle(color: null),
               ),
-              activeColor: Color(0xFFFF3A90),
+              activeColor: Constants.greenColor,
               textAlign: TextAlign.center,
             ),
           ],

@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:academy_manager/Constants.dart';
 import 'package:flutter/material.dart';
 
 class Splash extends StatefulWidget {
@@ -33,9 +34,9 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
             child: RotationTransition(
       turns: Tween(begin: 0.0, end: 1.0).animate(rotationController),
       child: Text(
-        'PESU',
+        'Academy Manager',
         style: TextStyle(
-          color: Colors.green,
+          color: Constants.greenColor,
           fontSize: 30,
           fontFamily: "Horizon",
           fontWeight: FontWeight.bold,
