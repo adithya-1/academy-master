@@ -1,7 +1,9 @@
+import 'package:academy_manager/Constants.dart';
 import 'package:flutter/material.dart';
 import 'package:academy_manager/pages/landingPage.dart';
 
 import 'package:academy_manager/services/auth.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LoginPage extends StatefulWidget {
   static String tag = 'login-page';
@@ -270,7 +272,7 @@ class _LoginPageState extends State<LoginPage> {
         ),
         onPressed: _validateAndSubmit,
         padding: EdgeInsets.all(12),
-        color: Color(0xFFf96327),
+        color: Constants.greenColor,
         child: Text(
           'Login',
           style: TextStyle(fontSize: 20, color: Colors.white),
@@ -415,7 +417,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget _title() {
     return RichText(
       textAlign: TextAlign.center,
-      text: TextSpan(text: 'P',
+      text: TextSpan(text: '',
           // style: GoogleFonts.portLligatSans(
           //   textStyle: Theme.of(context).textTheme.headline4,
           //   fontSize: 30,
@@ -424,9 +426,11 @@ class _LoginPageState extends State<LoginPage> {
           // ),
           children: [
             TextSpan(
-              text: 'PES University',
-              style: TextStyle(color: Color(0xFFf96327), fontSize: 30),
-            ),
+                text: 'Academy Manager',
+                style: GoogleFonts.openSans(
+                    color: Constants.greenColor,
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold)),
           ]),
     );
   }
@@ -443,76 +447,77 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Constants.greyColor,
         body: SingleChildScrollView(
             child: Container(
-      height: MediaQuery.of(context).size.height,
-      child: new Form(
-        key: _formKey,
-        child: Stack(
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Expanded(
-                    flex: 5,
-                    child: SizedBox(),
+          height: MediaQuery.of(context).size.height,
+          child: new Form(
+            key: _formKey,
+            child: Stack(
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Expanded(
+                        flex: 5,
+                        child: SizedBox(),
+                      ),
+                      _title(),
+                      SizedBox(
+                        height: 50,
+                      ),
+                      _emailPasswordWidget(),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      // Container(
+                      //   padding: EdgeInsets.symmetric(vertical: 10),
+                      //   alignment: Alignment.centerRight,
+                      //   child: RaisedButton(
+                      //     shape: RoundedRectangleBorder(
+                      //       borderRadius: BorderRadius.circular(24),
+                      //     ),
+                      //     onPressed: _forgotPassword,
+                      //     padding: EdgeInsets.all(12),
+                      //     color: Colors.white,
+                      //     child: Text(
+                      //       'Forgot Password ?',
+                      //       style: TextStyle(
+                      //           color: Colors.black,
+                      //           fontSize: 14,
+                      //           fontWeight: FontWeight.w500),
+                      //     ),
+                      //   ),
+                      // ),
+                      _submitButton(),
+                      //_divider(),
+                      // _showCircularProgress(),
+                      // _googleButton(),
+                      _showErrorMessage(),
+                      Expanded(
+                        flex: 2,
+                        child: SizedBox(),
+                      ),
+                    ],
                   ),
-                  _title(),
-                  SizedBox(
-                    height: 50,
-                  ),
-                  _emailPasswordWidget(),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  // Container(
-                  //   padding: EdgeInsets.symmetric(vertical: 10),
-                  //   alignment: Alignment.centerRight,
-                  //   child: RaisedButton(
-                  //     shape: RoundedRectangleBorder(
-                  //       borderRadius: BorderRadius.circular(24),
-                  //     ),
-                  //     onPressed: _forgotPassword,
-                  //     padding: EdgeInsets.all(12),
-                  //     color: Colors.white,
-                  //     child: Text(
-                  //       'Forgot Password ?',
-                  //       style: TextStyle(
-                  //           color: Colors.black,
-                  //           fontSize: 14,
-                  //           fontWeight: FontWeight.w500),
-                  //     ),
-                  //   ),
-                  // ),
-                  _submitButton(),
-                  //_divider(),
-                  // _showCircularProgress(),
-                  // _googleButton(),
-                  _showErrorMessage(),
-                  Expanded(
-                    flex: 2,
-                    child: SizedBox(),
-                  ),
-                ],
-              ),
+                ),
+                // Align(
+                //   alignment: Alignment.bottomCenter,
+                //   child: _createAccountLabel(),
+                // ),
+                // Positioned(top: 40, left: 0, child: _backButton()),
+                // Positioned(
+                //     top: -MediaQuery.of(context).size.height * .15,
+                //     right: -MediaQuery.of(context).size.width * .4,
+                //     child: BezierContainer()),
+                _showCircularProgress(),
+              ],
             ),
-            // Align(
-            //   alignment: Alignment.bottomCenter,
-            //   child: _createAccountLabel(),
-            // ),
-            // Positioned(top: 40, left: 0, child: _backButton()),
-            // Positioned(
-            //     top: -MediaQuery.of(context).size.height * .15,
-            //     right: -MediaQuery.of(context).size.width * .4,
-            //     child: BezierContainer()),
-            _showCircularProgress(),
-          ],
-        ),
-      ),
-    )));
+          ),
+        )));
   }
 
   @override
