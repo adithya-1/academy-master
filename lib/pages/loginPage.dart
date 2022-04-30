@@ -63,14 +63,6 @@ class _LoginPageState extends State<LoginPage> {
 
         if (userId != null && userId.length > 0) {
           widget.onsignedIn();
-          Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(
-                  builder: (context) => LandingPage(
-                        userId: userId,
-                        auth: widget.auth,
-                        onSignedOut: widget.onSignedOut,
-                      )),
-              (Route<dynamic> route) => false);
         }
       } catch (e) {
         setState(() {

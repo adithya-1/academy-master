@@ -49,7 +49,7 @@ class _LandingPageState extends State<LandingPage> {
                       'Log Out',
                       style: TextStyle(fontSize: 20),
                     )),
-                    onTap: widget.onSignedOut,
+                    onTap: _signOut,
                   ),
                 )
               ],
@@ -108,6 +108,12 @@ class _LandingPageState extends State<LandingPage> {
         ));
   }
 
+  _signOut() async {
+    try {
+      widget.onSignedOut();
+    } catch (e) {}
+  }
+
   Map<String, WidgetBuilder> _routeBuilders(BuildContext context, int index) {
     return {
       '/': (context) {
@@ -138,5 +144,10 @@ class _LandingPageState extends State<LandingPage> {
         },
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 }

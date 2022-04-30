@@ -31,8 +31,6 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Material(
         child: Center(
-            child: RotationTransition(
-      turns: Tween(begin: 0.0, end: 1.0).animate(rotationController),
       child: Text(
         'Academy Manager',
         style: TextStyle(
@@ -42,6 +40,6 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
           fontWeight: FontWeight.bold,
         ),
       ),
-    )));
+    ));
   }
 }
